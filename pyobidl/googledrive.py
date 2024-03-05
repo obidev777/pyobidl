@@ -8,7 +8,17 @@ def get_direct_url(id):
     response = session.get(URL, params = { 'id' : id }, stream = True)
     try:
         if response.url:
-            return response.url
+            url = response.url
+            resp = session.get(url)
+            soup = BeautifulSoup(resp.text,"html.parser")
+            inputs = soup.find_all('input')
+            for item in inputs:
+                try:
+                    key = item['name']
+                    value = item['value']
+                    url += f'&{key}={value}'
+                except:pass
+            return url
     except:pass
     return None
 
