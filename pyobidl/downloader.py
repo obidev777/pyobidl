@@ -7,6 +7,7 @@ from . import mediafire
 from .megacli import mega
 from .megacli import megafolder
 from .utils import req_file_size,get_file_size,get_url_file_name,slugify,createID,makeSafeFilename
+from .publerio import get_publerio_info
 
 class Downloader(object):
     def __init__(self,destpath=''):
@@ -40,6 +41,13 @@ class Downloader(object):
                     info = googledrive.get_info(url)
                     self.filename = slugify(info['file_name'])
                     url = info['file_url']
+                except:return None
+        elif 'facebook' in url or 'instagram' in url or 'twitter' in url:
+                try:
+                    info = get_publerio_info(url)
+                    if not info:
+                        return None
+                    url = info.url
                 except:return None
         elif 'mega.nz' in url:
                 try:
@@ -90,6 +98,13 @@ class Downloader(object):
                     info = googledrive.get_info(url)
                     self.filename = slugify(info['file_name'])
                     url = info['file_url']
+                except:return None
+        elif 'facebook' in url or 'instagram' in url:
+                try:
+                    info = get_publerio_info(url)
+                    if not info:
+                        return None
+                    url = info.url
                 except:return None
         elif 'mega.nz' in url:
                 try:
@@ -199,6 +214,13 @@ class AsyncDownloader(object):
                     info = googledrive.get_info(url)
                     self.filename = slugify(info['file_name'])
                     url = info['file_url']
+                except:return None
+        elif 'facebook' in url or 'instagram' in url:
+                try:
+                    info = get_publerio_info(url)
+                    if not info:
+                        return None
+                    url = info.url
                 except:return None
         elif 'mega.nz' in url:
                 try:
