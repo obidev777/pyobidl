@@ -1,7 +1,7 @@
 # Pyobidl
-Python 3 library for downloading (googledrive,mega,mediafire,directurl)
+Python 3 library for downloading (googledrive,mega,mediafire,facebook,instagram,twiter,directurl)
 # Description
-Pyobidl is a fast library for downloading (googledrive,mega,mediafire,directurl) using requests,mega.py
+Pyobidl is a fast library for downloading (googledrive,mega,mediafire,facebook,instagram,twiter,directurl) using requests,mega.py
 # Features v1.1.0
 - Asyncs methods
 - Suport Mega Files and Folders Urls
